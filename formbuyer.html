@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formulario Buyer Persona</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        margin: 0;
+        padding: 20px;
+    }
+    .container {
+        max-width: 850px;
+        margin: auto;
+        background: #fff;
+        padding: 20px 30px;
+        border-radius: 8px;
+        box-shadow: 0px 0px 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+        text-align: center;
+        color: #333;
+    }
+    h2 {
+        color: #4CAF50;
+        margin-top: 20px;
+    }
+    label {
+        font-weight: bold;
+        display: block;
+        margin-top: 10px;
+    }
+    input, select, textarea {
+        width: 100%;
+        padding: 8px;
+        margin-top: 5px;
+        margin-bottom: 15px;
+        border-radius: 4px;
+        border: 1px solid #ccc;
+    }
+    .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-bottom: 15px;
+    }
+    .checkbox-group label {
+        font-weight: normal;
+    }
+    button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border: none;
+        cursor: pointer;
+        border-radius: 4px;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+    button:hover {
+        background-color: #45a049;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Formulario Buyer Persona</h1>
+
+    <!-- 1. Datos Demográficos -->
+    <h2>1. Datos Demográficos</h2>
+    <label>Nombre ficticio:</label>
+    <input type="text" id="nombre">
+
+    <label>Edad:</label>
+    <input type="number" id="edad">
+
+    <label>Género:</label>
+    <select id="genero">
+        <option>Masculino</option>
+        <option>Femenino</option>
+        <option>Otro</option>
+    </select>
+
+    <label>Estado civil:</label>
+    <input type="text" id="estadoCivil">
+
+    <label>Ciudad / Región:</label>
+    <input type="text" id="ciudad">
+
+    <label>Nivel educativo:</label>
+    <input type="text" id="nivelEducativo">
+
+    <label>Ocupación / Profesión:</label>
+    <input type="text" id="ocupacion">
+
+    <label>Ingresos mensuales aproximados:</label>
+    <input type="text" id="ingresos">
+
+    <!-- 2. Información Personal y Estilo de Vida -->
+    <h2>2. Información Personal y Estilo de Vida</h2>
+    <label>Intereses y pasatiempos:</label>
+    <textarea id="intereses"></textarea>
+
+    <label>Valores y creencias importantes:</label>
+    <textarea id="valores"></textarea>
+
+    <label>Medios de comunicación que consume:</label>
+    <textarea id="medios"></textarea>
+
+    <label>Uso de redes sociales:</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox" id="fb"> Facebook</label>
+        <label><input type="checkbox" id="ig"> Instagram</label>
+        <label><input type="checkbox" id="tt"> TikTok</label>
+        <label><input type="checkbox" id="yt"> YouTube</label>
+        <label><input type="checkbox" id="wa"> WhatsApp</label>
+        <label><input type="checkbox" id="otroRedes"> Otro</label>
+    </div>
+
+    <!-- 3. Necesidades y Problemas -->
+    <h2>3. Necesidades y Problemas</h2>
+    <label>Principales necesidades relacionadas con tu producto o servicio:</label>
+    <textarea id="necesidades"></textarea>
+
+    <label>Problemas o frustraciones que busca resolver:</label>
+    <textarea id="problemas"></textarea>
+
+    <!-- 4. Comportamiento de Compra -->
+    <h2>4. Comportamiento de Compra</h2>
+    <label>¿Dónde suele buscar información antes de comprar?</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox" id="csRedes"> Redes sociales</label>
+        <label><input type="checkbox" id="csGoogle"> Google</label>
+        <label><input type="checkbox" id="csRecomend"> Recomendaciones</label>
+        <label><input type="checkbox" id="csTiendas"> Tiendas físicas</label>
+        <label><input type="checkbox" id="csOtros"> Otros</label>
+    </div>
+
+    <label>Factores que más influyen en su decisión:</label>
+    <div class="checkbox-group">
+        <label><input type="checkbox" id="facPrecio"> Precio</label>
+        <label><input type="checkbox" id="facCalidad"> Calidad</label>
+        <label><input type="checkbox" id="facRecomend"> Recomendaciones</label>
+        <label><input type="checkbox" id="facPromos"> Promociones</label>
+        <label><input type="checkbox" id="facExperiencia"> Experiencia previa</label>
+    </div>
+
+    <label>Frecuencia de compra:</label>
+    <input type="text" id="frecuencia">
+
+    <!-- 5. Mensaje Clave -->
+    <h2>5. Mensaje Clave</h2>
+    <label>¿Qué mensaje o promesa haría que esta persona diga “quiero comprar”?</label>
+    <textarea id="mensaje"></textarea>
+
+    <button onclick="guardarPDF()">Guardar como PDF</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script>
+    async function guardarPDF() {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF({ unit: "mm", format: "a4" });
+        let y = 10;
+        doc.setFontSize(14);
+        doc.text("Buyer Persona", 105, y, { align: "center" });
+        y += 10;
+
+        function addText(label, valor) {
+            doc.setFontSize(11);
+            doc.text(`${label}:`, 10, y);
+            y += 6;
+            let textoDividido = doc.splitTextToSize(valor || "—", 180);
+            doc.text(textoDividido, 10, y);
+            y += (textoDividido.length * 6) + 4;
+        }
+
+        // 1. Datos Demográficos
+        addText("Nombre ficticio", document.getElementById("nombre").value);
+        addText("Edad", document.getElementById("edad").value);
+        addText("Género", document.getElementById("genero").value);
+        addText("Estado civil", document.getElementById("estadoCivil").value);
+        addText("Ciudad / Región", document.getElementById("ciudad").value);
+        addText("Nivel educativo", document.getElementById("nivelEducativo").value);
+        addText("Ocupación / Profesión", document.getElementById("ocupacion").value);
+        addText("Ingresos mensuales aproximados", document.getElementById("ingresos").value);
+
+        // 2. Información Personal y Estilo de Vida
+        addText("Intereses y pasatiempos", document.getElementById("intereses").value);
+        addText("Valores y creencias", document.getElementById("valores").value);
+        addText("Medios de comunicación que consume", document.getElementById("medios").value);
+
+        const redes = [];
+        if(document.getElementById("fb").checked) redes.push("Facebook");
+        if(document.getElementById("ig").checked) redes.push("Instagram");
+        if(document.getElementById("tt").checked) redes.push("TikTok");
+        if(document.getElementById("yt").checked) redes.push("YouTube");
+        if(document.getElementById("wa").checked) redes.push("WhatsApp");
+        if(document.getElementById("otroRedes").checked) redes.push("Otro");
+        addText("Uso de redes sociales", redes.join(", "));
+
+        // 3. Necesidades y Problemas
+        addText("Principales necesidades", document.getElementById("necesidades").value);
+        addText("Problemas o frustraciones", document.getElementById("problemas").value);
+
+        // 4. Comportamiento de Compra
+        const infoCompra = [];
+        if(document.getElementById("csRedes").checked) infoCompra.push("Redes sociales");
+        if(document.getElementById("csGoogle").checked) infoCompra.push("Google");
+        if(document.getElementById("csRecomend").checked) infoCompra.push("Recomendaciones");
+        if(document.getElementById("csTiendas").checked) infoCompra.push("Tiendas físicas");
+        if(document.getElementById("csOtros").checked) infoCompra.push("Otros");
+        addText("Dónde busca información", infoCompra.join(", "));
+
+        const factores = [];
+        if(document.getElementById("facPrecio").checked) factores.push("Precio");
+        if(document.getElementById("facCalidad").checked) factores.push("Calidad");
+        if(document.getElementById("facRecomend").checked) factores.push("Recomendaciones");
+        if(document.getElementById("facPromos").checked) factores.push("Promociones");
+        if(document.getElementById("facExperiencia").checked) factores.push("Experiencia previa");
+        addText("Factores que influyen en la decisión", factores.join(", "));
+
+        addText("Frecuencia de compra", document.getElementById("frecuencia").value);
+
+        // 5. Mensaje Clave
+        addText("Mensaje clave para motivar compra", document.getElementById("mensaje").value);
+
+        doc.save("buyer_persona.pdf");
+    }
+</script>
+
+</body>
+</html>
