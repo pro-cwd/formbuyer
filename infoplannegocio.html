@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infografía Interactiva: Plan de Negocio para Microempresas</title>
+<style>
+:root{
+--azul:#1D53A0;
+--amarillo:#FEBB33;
+--verde:#64A98F;
+--menta:#9FFFCB;
+--gris:#f5f7fb;
+--texto:#1b1f2a;
+--texto-sec:#42526e;
+--borde:#e6ecf5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--gris);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:1100px;margin:clamp(12px,2vw,24px) auto;padding:clamp(12px,3vw,28px);background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+header{display:grid;gap:10px;justify-items:center;text-align:center}
+.badge{display:inline-block;background:var(--menta);color:var(--azul);font-weight:800;padding:.4rem .8rem;border-radius:999px;font-size:.85rem;letter-spacing:.3px}
+h1{margin:.2rem 0 0;font-size:clamp(1.4rem,3.2vw,2rem);color:var(--azul)}
+.sub{color:var(--texto-sec);max-width:900px}
+.palette{display:flex;gap:10px;margin:.25rem 0 1rem}
+.sw{width:28px;height:18px;border-radius:6px;border:1px solid #e6eaef}
+.sw.c1{background:#1D53A0}.sw.c2{background:#FEBB33}.sw.c3{background:#64A98F}.sw.c4{background:#9FFFCB}
+.grid{display:grid;gap:14px}
+.cols-2{grid-template-columns:repeat(2,1fr)}
+@media (max-width:640px){.cols-2{grid-template-columns:1fr}}
+
+.card{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:16px}
+.card.h{display:flex;gap:12px;align-items:flex-start;border-left:6px solid var(--verde)}
+.title{font-weight:900;color:var(--azul)}
+.lead{color:var(--texto-sec);margin:.25rem 0 .4rem}
+.pill{display:inline-block;background:#eef7f4;border:1px solid #d7efe6;color:#245c4c;font-weight:700;border-radius:999px;padding:.25rem .6rem;font-size:.78rem}
+
+/* Acordeones */
+details{border:1px solid var(--borde);border-radius:12px;padding:12px;background:#fcfdff}
+summary{cursor:pointer;font-weight:900;color:var(--azul);list-style:none}
+summary::-webkit-details-marker{display:none}
+summary::after {content: '+'; float: right; font-size: 1.5rem; transition: transform 0.3s;}
+details[open] summary::after {content: '−'; transform: rotate(180deg);}
+details+details{margin-top:10px}
+details > p {margin-top: 10px;}
+
+/* Chips & alerts */
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items: center}
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#1a1a1a;font-weight:800;border:none;border-radius:12px;padding:.6rem .9rem;cursor:pointer}
+.cta:hover{filter:brightness(.98)}
+.note{margin-top:12px;font-size:.92rem;color:var(--texto-sec);background:#f6fbff;border:1px dashed #dbe8ff;padding:10px;border-radius:10px}
+
+/* Color accents */
+.accent-azul{border-left:6px solid var(--azul)}
+.accent-verde{border-left:6px solid var(--verde)}
+.accent-amarillo{border-left:6px solid var(--amarillo)}
+.accent-menta{border-left:6px solid var(--menta)}
+</style>
+</head>
+<body>
+<div class="wrap" role="main">
+<header>
+<span class="badge">6.4 • Plan de Negocio para Microempresas</span>
+<h1>Construye la hoja de ruta de tu negocio</h1>
+<p class="sub">
+Un <strong>plan de negocio</strong> es un documento clave que describe la estrategia operativa y financiera de tu empresa. Comprender sus componentes básicos es esencial para cualquier microempresario. Es tu mapa para el crecimiento.
+</p>
+<div class="palette" aria-label="Paleta de colores">
+<span class="sw c1" title="#1D53A0"></span>
+<span class="sw c2" title="#FEBB33"></span>
+<span class="sw c3" title="#64A98F"></span>
+<span class="sw c4" title="#9FFFCB"></span>
+</div>
+</header>
+
+<div class="note" style="margin-top: 18px">
+Un plan de negocio, aunque no siempre sea formal, actúa como una guía para el crecimiento, ayudando a los emprendedores a pensar estratégicamente y a identificar desafíos y oportunidades.
+</div>
+
+<div style="margin-top:18px">
+<h2>Secciones Clave de un Plan de Negocio Tradicional</h2>
+
+<details open>
+<summary>1. Resumen Ejecutivo</summary>
+<p>Una breve descripción de la empresa, sus objetivos, productos o servicios, información del equipo directivo y planes de crecimiento. Si se busca financiamiento, debe incluir información financiera de alto nivel.</p>
+</details>
+
+<details>
+<summary>2. Descripción de la Compañía</summary>
+<p>Detalles sobre el negocio, los problemas que resuelve, los consumidores a los que atiende y las ventajas competitivas, como la experiencia del equipo o una ubicación ideal.</p>
+</details>
+
+<details>
+<summary>3. Análisis de Mercado</summary>
+<p>Una comprensión profunda del sector y del mercado objetivo. Incluye la investigación de la competencia (qué hacen otras empresas, por qué les funciona) y un análisis de tendencias.</p>
+</details>
+
+<details>
+<summary>4. Organización y Gestión</summary>
+<p>Explica la estructura legal de la empresa (propietario único, sociedad, etc.) y quién la dirigirá. Presenta un organigrama y describe la experiencia y funciones del personal clave.</p>
+</details>
+
+<details>
+<summary>5. Línea de Servicios o Productos</summary>
+<p>Describe lo que se vende, cómo beneficia a los clientes, el ciclo de vida del producto y los planes de propiedad intelectual (derechos de autor, patentes).</p>
+</details>
+
+<details>
+<summary>6. Publicidad y Ventas</summary>
+<p>Detalla la estrategia de marketing y ventas, incluyendo cómo se atraerá y retendrá a los clientes, y el proceso para concretar una venta. Debe ser detallado para futuras proyecciones financieras. Aquí se incluyen las estrategias de marketing digital, el comercio electrónico y la estrategia de ventas.</p>
+</details>
+
+<details>
+<summary>7. Solicitud de Financiamiento (si aplica)</summary>
+<p>Si se busca financiación, se debe delinear cuánto se necesitará en los próximos años, el uso que se le dará a los fondos (equipo, materiales, salarios) y los planes financieros futuros.</p>
+</details>
+
+<details>
+<summary>8. Proyecciones Financieras</summary>
+<p>Incluye estados proyectados de pérdidas y ganancias, flujo de efectivo y balance general para los primeros años. También, un análisis de costos (fijos, variables) y un análisis del punto de equilibrio.</p>
+</details>
+
+</div>
+
+<div class="card accent-azul" style="margin-top:18px">
+<div class="title">Tu plan, tu mapa</div>
+<p class="lead">Considera tu plan de negocio no solo como un requisito formal, sino como una herramienta práctica para guiar tu crecimiento, identificar oportunidades y anticipar desafíos. ¡Es la base de tu éxito!</p>
+</div>
+</div>
+</body>
+</html>
