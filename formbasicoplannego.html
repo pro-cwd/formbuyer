@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Formulario: Plan de Negocio para Microempresas</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<style>
+:root{
+--azul:#1D53A0;
+--amarillo:#FEBB33;
+--verde:#64A98F;
+--menta:#9FFFCB;
+--gris:#f5f7fb;
+--texto:#1b1f2a;
+--texto-sec:#42526e;
+--borde:#e6ecf5;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:var(--gris);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.55}
+.wrap{max-width:1100px;margin:clamp(12px,2vw,24px) auto;padding:clamp(12px,3vw,28px);background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+header{display:grid;gap:10px;justify-items:center;text-align:center}
+.badge{display:inline-block;background:var(--menta);color:var(--azul);font-weight:800;padding:.4rem .8rem;border-radius:999px;font-size:.85rem;letter-spacing:.3px}
+h1{margin:.2rem 0 0;font-size:clamp(1.4rem,3.2vw,2rem);color:var(--azul)}
+.sub{color:var(--texto-sec);max-width:900px}
+.palette{display:flex;gap:10px;margin:.25rem 0 1rem}
+.sw{width:28px;height:18px;border-radius:6px;border:1px solid #e6eaef}
+.sw.c1{background:#1D53A0}.sw.c2{background:#FEBB33}.sw.c3{background:#64A98F}.sw.c4{background:#9FFFCB}
+
+.form-section{border:1px solid var(--borde);border-radius:14px;padding:20px;margin-top:16px;background:#fcfdff;}
+.form-section.accent-azul{border-left:6px solid var(--azul);}
+.form-section.accent-verde{border-left:6px solid var(--verde);}
+.form-section.accent-amarillo{border-left:6px solid var(--amarillo);}
+.form-section.accent-menta{border-left:6px solid var(--menta);}
+
+.section-title{font-weight:900;color:var(--azul);margin-top:0;margin-bottom:12px;font-size:1.2rem;}
+label{display:block;margin-bottom:6px;font-weight:600;color:var(--texto-sec);}
+input[type="text"], textarea{width:100%;padding:10px;border:1px solid var(--borde);border-radius:8px;font-family:inherit;font-size:1rem;color:var(--texto);background:#fff;}
+textarea{min-height:100px;resize:vertical;}
+.form-group{margin-bottom:16px;}
+
+.note{margin-top:12px;font-size:.92rem;color:var(--texto-sec);background:#f6fbff;border:1px dashed #dbe8ff;padding:10px;border-radius:10px}
+
+.cta{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#1a1a1a;font-weight:800;border:none;border-radius:12px;padding:.8rem 1.2rem;cursor:pointer;margin-top:20px;text-decoration:none;}
+.cta:hover{filter:brightness(.98);}
+.cta-container{display:flex;justify-content:center;}
+</style>
+</head>
+<body>
+<div class="wrap" role="main" id="formulario-pn">
+<header>
+<span class="badge">6.4 • Formulario de Plan de Negocio</span>
+<h1>Construye la hoja de ruta de tu negocio</h1>
+<p class="sub">
+Utiliza este formulario para estructurar las ideas iniciales de tu plan de negocio. Un buen plan es el primer paso para un crecimiento estratégico y seguro.
+</p>
+<div class="palette" aria-label="Paleta de colores">
+<span class="sw c1" title="#1D53A0"></span>
+<span class="sw c2" title="#FEBB33"></span>
+<span class="sw c3" title="#64A98F"></span>
+<span class="sw c4" title="#9FFFCB"></span>
+</div>
+</header>
+
+<form id="plan-de-negocio-form">
+
+<div class="form-section accent-azul">
+<h2 class="section-title">1. Resumen Ejecutivo</h2>
+<div class="form-group">
+<label for="empresa">Nombre de la Empresa</label>
+<input type="text" id="empresa" name="empresa">
+</div>
+<div class="form-group">
+<label for="resumen">Descripción general de la empresa y sus objetivos</label>
+<textarea id="resumen" name="resumen" placeholder="Describe brevemente tu empresa, los productos/servicios que ofreces y tus metas principales."></textarea>
+</div>
+</div>
+
+<div class="form-section accent-verde">
+<h2 class="section-title">2. Descripción de la Compañía</h2>
+<div class="form-group">
+<label for="problema">¿Qué problema resuelves a tus clientes?</label>
+<textarea id="problema" name="problema" placeholder="Describe el problema o la necesidad que tu producto/servicio satisface."></textarea>
+</div>
+<div class="form-group">
+<label for="ventajas">Ventajas competitivas</label>
+<textarea id="ventajas" name="ventajas" placeholder="¿Qué hace que tu negocio sea único? (Ej: experiencia del equipo, calidad, ubicación, etc.)"></textarea>
+</div>
+</div>
+
+<div class="form-section accent-amarillo">
+<h2 class="section-title">3. Análisis de Mercado</h2>
+<div class="form-group">
+<label for="mercado">Mercado Objetivo</label>
+<textarea id="mercado" name="mercado" placeholder="¿Quiénes son tus clientes ideales? Describe sus características demográficas y necesidades."></textarea>
+</div>
+<div class="form-group">
+<label for="competencia">Análisis de la Competencia</label>
+<textarea id="competencia" name="competencia" placeholder="¿Quiénes son tus principales competidores y qué puedes aprender de ellos?"></textarea>
+</div>
+</div>
+
+<div class="form-section accent-menta">
+<h2 class="section-title">4. Línea de Servicios o Productos</h2>
+<div class="form-group">
+<label for="productos">Descripción de tus productos o servicios</label>
+<textarea id="productos" name="productos" placeholder="Detalla lo que vendes y cómo beneficia a los clientes."></textarea>
+</div>
+</div>
+
+<div class="form-section accent-azul">
+<h2 class="section-title">5. Publicidad y Ventas</h2>
+<div class="form-group">
+<label for="marketing">Estrategia de Marketing y Ventas</label>
+<textarea id="marketing" name="marketing" placeholder="¿Cómo atraerás y retendrás a tus clientes? (Ej: redes sociales, publicidad local, e-commerce, etc.)"></textarea>
+</div>
+</div>
+
+<div class="form-section accent-verde">
+<h2 class="section-title">6. Proyecciones Financieras</h2>
+<div class="form-group">
+<label for="costos">Análisis de costos (fijos y variables)</label>
+<textarea id="costos" name="costos" placeholder="Lista tus costos fijos (alquiler, salarios) y variables (materiales, envíos)."></textarea>
+</div>
+<div class="form-group">
+<label for="financiamiento">Necesidad de Financiamiento (si aplica)</label>
+<textarea id="financiamiento" name="financiamiento" placeholder="¿Necesitas fondos? ¿Cuánto y para qué los usarás?"></textarea>
+</div>
+</div>
+
+</form>
+<div class="cta-container">
+<button class="cta" id="downloadPdf">Descargar mi Plan de Negocio (PDF)</button>
+</div>
+</div>
+
+<script>
+window.jsPDF = window.jspdf.jsPDF;
+document.getElementById('downloadPdf').addEventListener('click', function () {
+const form = document.getElementById('plan-de-negocio-form');
+html2canvas(form, { scale: 2 }).then(canvas => {
+const imgData = canvas.toDataURL('image/png');
+const pdf = new jsPDF('p', 'mm', 'a4');
+const imgProps= pdf.getImageProperties(imgData);
+const pdfWidth = pdf.internal.pageSize.getWidth();
+const pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
+let position = 0;
+
+pdf.addImage(imgData, 'PNG', 0, position, pdfWidth, pdfHeight);
+
+const totalPages = Math.ceil(pdfHeight / pdf.internal.pageSize.getHeight());
+let remainingHeight = pdfHeight - pdf.internal.pageSize.getHeight();
+let pageNum = 1;
+
+while (remainingHeight > 0) {
+pdf.addPage();
+pageNum++;
+const yOffset = -pdf.internal.pageSize.getHeight() * (pageNum - 1);
+pdf.addImage(imgData, 'PNG', 0, yOffset, pdfWidth, pdfHeight);
+remainingHeight -= pdf.internal.pageSize.getHeight();
+}
+
+pdf.save('Plan_de_Negocio.pdf');
+});
+});
+</script>
+</body>
+</html>
