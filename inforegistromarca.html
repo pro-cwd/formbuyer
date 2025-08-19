@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infografía Interactiva: Registro de Marca (SENADI) & Propiedad Intelectual</title>
+<style>
+  :root{
+    --azul:#1D53A0;
+    --amarillo:#FEBB33;
+    --verde:#64A98F;
+    --menta:#9FFFCB;
+    --gris:#f5f7fb;
+    --texto:#1b1f2a;
+    --texto-sec:#42526e;
+    --borde:#e6ecf5;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--gris);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.55}
+  .wrap{max-width:1100px;margin:clamp(12px,2vw,24px) auto;padding:clamp(12px,3vw,28px);background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+  header{display:grid;gap:10px;justify-items:center;text-align:center}
+  .badge{display:inline-block;background:var(--menta);color:var(--azul);font-weight:800;padding:.4rem .8rem;border-radius:999px;font-size:.85rem;letter-spacing:.3px}
+  h1{margin:.2rem 0 0;font-size:clamp(1.4rem,3.2vw,2rem);color:var(--azul)}
+  .sub{color:var(--texto-sec);max-width:900px}
+  .palette{display:flex;gap:10px;margin:.25rem 0 1rem}
+  .sw{width:28px;height:18px;border-radius:6px;border:1px solid #e6eaef}
+  .sw.c1{background:#1D53A0}.sw.c2{background:#FEBB33}.sw.c3{background:#64A98F}.sw.c4{background:#9FFFCB}
+
+  /* Tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tab{cursor:pointer;border:2px solid transparent;background:#eef5ff;color:var(--azul);padding:.6rem .9rem;border-radius:12px;font-weight:800;transition:.2s}
+  .tab:hover{transform:translateY(-1px)}
+  .tab.active{background:var(--azul);color:#fff}
+  .panel{display:none;margin-top:16px;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* Layout helpers */
+  .grid{display:grid;gap:14px}
+  .cols-3{grid-template-columns:repeat(3,1fr)}
+  .cols-2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){.cols-3{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.cols-3,.cols-2{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid var(--borde);border-radius:14px;padding:16px}
+  .card.h{display:flex;gap:12px;align-items:flex-start;border-left:6px solid var(--verde)}
+  .title{font-weight:900;color:var(--azul)}
+  .lead{color:var(--texto-sec);margin:.25rem 0 .4rem}
+  .pill{display:inline-block;background:#eef7f4;border:1px solid #d7efe6;color:#245c4c;font-weight:700;border-radius:999px;padding:.25rem .6rem;font-size:.78rem}
+
+  /* Acordeones */
+  details{border:1px solid var(--borde);border-radius:12px;padding:12px;background:#fcfdff}
+  summary{cursor:pointer;font-weight:900;color:var(--azul);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details+details{margin-top:10px}
+
+  /* Timeline */
+  .timeline{position:relative;padding-left:24px}
+  .timeline::before{content:"";position:absolute;left:10px;top:0;bottom:0;width:3px;background:linear-gradient(var(--azul),var(--menta))}
+  .step{position:relative;background:#fff;border:1px solid var(--borde);border-radius:12px;padding:12px 12px 12px 16px;margin:10px 0}
+  .step::before{content:attr(data-step);position:absolute;left:-3px;top:12px;background:var(--amarillo);color:#1a1a1a;font-weight:900;border-radius:999px;padding:.15rem .5rem;border:2px solid #fff;box-shadow:0 0 0 2px var(--azul)}
+  .hint{font-size:.92rem;color:var(--texto-sec)}
+
+  /* Chips & alerts */
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#1a1a1a;font-weight:800;border:none;border-radius:12px;padding:.6rem .9rem;cursor:pointer}
+  .cta:hover{filter:brightness(.98)}
+  .note{margin-top:12px;font-size:.92rem;color:var(--texto-sec);background:#f6fbff;border:1px dashed #dbe8ff;padding:10px;border-radius:10px}
+
+  /* Tooltip simple */
+  .tip{position:relative;cursor:help;border-bottom:1px dotted currentColor}
+  .tip:hover::after{content:attr(data-tip);position:absolute;z-index:10;left:0;top:120%;min-width:220px;max-width:320px;background:#0f1f3a;color:#fff;padding:.55rem .7rem;border-radius:8px;font-size:.85rem;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+
+  /* Color accents */
+  .accent-azul{border-left:6px solid var(--azul)}
+  .accent-verde{border-left:6px solid var(--verde)}
+  .accent-amarillo{border-left:6px solid var(--amarillo)}
+  .accent-menta{border-left:6px solid var(--menta)}
+</style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <span class="badge">6.1 • Registro de Marca (SENADI) — Ecuador</span>
+      <h1>Protege tu identidad y crece con seguridad</h1>
+      <p class="sub">
+        Registrar tu marca en el <strong>SENADI</strong> protege el <em>nombre y logotipo</em> de tu microempresa y te da herramientas legales para actuar ante copias o usos no autorizados. 
+        Es una inversión estratégica en el presente y futuro de tu negocio.
+      </p>
+      <div class="palette" aria-label="Paleta de colores">
+        <span class="sw c1" title="#1D53A0"></span>
+        <span class="sw c2" title="#FEBB33"></span>
+        <span class="sw c3" title="#64A98F"></span>
+        <span class="sw c4" title="#9FFFCB"></span>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tabs" role="tablist" aria-label="Secciones de la infografía">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="p1" id="t1">Ventajas</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">Proceso SENADI</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3">Propiedad Intelectual</button>
+    </nav>
+
+    <!-- Panel Ventajas -->
+    <section class="panel active" id="p1" role="tabpanel" aria-labelledby="t1">
+      <div class="grid cols-3">
+        <article class="card accent-verde">
+          <div class="title">Protección Legal</div>
+          <p class="lead">Derecho exclusivo de uso de tu marca y acción frente a infracciones en un mercado competitivo.</p>
+          <span class="pill">Exclusividad</span> <span class="pill">Antipiratería</span>
+        </article>
+        <article class="card accent-azul">
+          <div class="title">Diferenciación</div>
+          <p class="lead">Destácate en mercados saturados. Refuerza identidad y lealtad: los clientes confían en marcas registradas.</p>
+          <span class="pill">Identidad</span> <span class="pill">Confianza</span>
+        </article>
+        <article class="card accent-amarillo">
+          <div class="title">Valor Empresarial</div>
+          <p class="lead">Tu marca es un activo que pesa en inversiones y alianzas. Señal de seriedad y profesionalismo.</p>
+          <span class="pill">Activo</span> <span class="pill">Inversión</span>
+        </article>
+      </div>
+      <div class="grid cols-2" style="margin-top:14px">
+        <article class="card accent-menta">
+          <div class="title">Facilita Expansión</div>
+          <p class="lead">Clave para crecer a nivel nacional o internacional y atraer socios/clientes en nuevos mercados.</p>
+          <span class="pill">Escalabilidad</span> <span class="pill">Nuevos mercados</span>
+        </article>
+        <article class="card accent-verde">
+          <div class="title">Credibilidad y Confianza</div>
+          <p class="lead">Transmite compromiso con calidad y legalidad. Mejora reputación y preferencia del consumidor.</p>
+          <span class="pill">Reputación</span> <span class="pill">Preferencia</span>
+        </article>
+      </div>
+      <div class="note">
+        <strong>Dato:</strong> La protección dura <strong>10 años</strong> y es <strong>renovable indefinidamente</strong>.
+      </div>
+    </section>
+
+    <!-- Panel Proceso -->
+    <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2">
+      <div class="card accent-azul" style="margin-bottom:10px">
+        <div class="title">Proceso de Registro en Ecuador (SENADI)</div>
+        <p class="lead">Duración estimada: <strong>5–6 meses</strong>. Costos referenciales: <strong>$16 búsqueda fonética</strong> (opcional) y <strong>$208 registro básico</strong> (según clase).</p>
+        <div class="row">
+          <span class="pill">En línea</span>
+          <span class="pill">Casillero Virtual</span>
+          <span class="pill">Clase Niza</span>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div class="step" data-step="1">
+          <strong>Búsqueda Fonética (opcional, recomendada)</strong>
+          <p class="hint">Verifica anterioridades en la base del SENADI para evitar choques con marcas similares.</p>
+          <ul class="hint" style="margin:.2rem 0 0 1rem">
+            <li>Solicitud por correo: <span class="tip" data-tip="Dirección referencial del SENADI para búsquedas fonéticas. Verifica siempre en el sitio oficial.">foneticoquito@senadi.gob.ec</span></li>
+            <li>Costo: <strong>$16</strong> • Tiempo: <strong>3–5 días hábiles</strong></li>
+            <li>Recibirás un informe con posibles similitudes.</li>
+          </ul>
+        </div>
+
+        <div class="step" data-step="2">
+          <strong>Ingreso al sistema del SENADI</strong>
+          <p class="hint">Crea tu <em>Casillero Virtual</em> (persona natural con cédula / jurídica con RUC).</p>
+          <ul class="hint" style="margin:.2rem 0 0 1rem">
+            <li>Ir a: <span class="tip" data-tip="Busca 'SENADI Ecuador' en tu navegador y entra al portal oficial.">Portal SENADI</span> → Programa/Servicios → Casillero Virtual</li>
+            <li>Recibirás usuario y contraseña por correo.</li>
+          </ul>
+        </div>
+
+        <div class="step" data-step="3">
+          <strong>Presenta tu solicitud de registro</strong>
+          <p class="hint">Entra a “Solicitudes en línea” → “Registro” → “Solicitud de signos distintivos”.</p>
+          <ul class="hint" style="margin:.2rem 0 0 1rem">
+            <li>Completa la plantilla con datos de tu marca (sé preciso en la descripción).</li>
+            <li>Genera vista previa y comprobante de pago.</li>
+            <li><strong>Costo básico:</strong> $208 (pueden aplicar adicionales por clases/alcances).</li>
+            <li><strong>Clase Niza:</strong> elige la(s) clase(s) según productos/servicios.</li>
+          </ul>
+        </div>
+
+        <div class="step" data-step="4">
+          <strong>Pago de tasas</strong>
+          <p class="hint">Cancela en Banco del Pacífico o en línea. Escanea y adjunta comprobantes (PDF).</p>
+        </div>
+
+        <div class="step" data-step="5">
+          <strong>Inicio, examen y publicación</strong>
+          <p class="hint">Se asigna un número de trámite. Examen de forma y fondo. Publicación en la Gaceta.</p>
+        </div>
+
+        <div class="step" data-step="6">
+          <strong>Oposición y resolución</strong>
+          <p class="hint">Terceros pueden oponerse (30 días). SENADI evalúa y decide. Si procede, se concede el registro.</p>
+        </div>
+      </div>
+
+      <details style="margin-top:12px">
+        <summary>¿Necesito abogado?</summary>
+        <p>Es recomendable. Un error puede implicar pérdida de tasas o rechazo. Un profesional te guía en clase Niza, descripción y respuestas a oposiciones.</p>
+      </details>
+      <div class="note">
+        <strong>Recuerda:</strong> Mantén actualizado tu casillero y conserva respaldos. Renueva cada 10 años a tiempo.
+      </div>
+    </section>
+
+    <!-- Panel Propiedad Intelectual -->
+    <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3">
+      <div class="grid cols-2">
+        <article class="card accent-azul">
+          <div class="title">¿Qué es la Propiedad Intelectual?</div>
+          <p class="lead">Conjunto de derechos sobre <strong>creaciones de la mente</strong>: invenciones, obras literarias/artísticas, símbolos, nombres e imágenes usados en el comercio.</p>
+          <div class="row">
+            <span class="pill">Derecho de Autor</span>
+            <span class="pill">Propiedad Industrial</span>
+            <span class="pill">Obtenciones Vegetales</span>
+          </div>
+        </article>
+
+        <article class="card accent-verde">
+          <div class="title">Derecho de Autor</div>
+          <ul class="lead" style="margin:.3rem 0 0 1rem">
+            <li><strong>Protección:</strong> protege la <em>expresión</em> de la obra, no la idea.</li>
+            <li><strong>Nacimiento:</strong> nace por la creación, sin formalidades.</li>
+            <li><strong>Registro (opcional):</strong> en línea ante SENADI.
+              <div class="hint">Costo aprox. <strong>$12</strong> • Tiempo aprox. <strong>20 días hábiles</strong></div>
+            </li>
+            <li><strong>Derechos patrimoniales:</strong> permiten explotar económicamente la obra (cedibles).</li>
+            <li><strong>Creative Commons:</strong> licencias gratuitas para definir usos (comercial, modificaciones, etc.).</li>
+          </ul>
+        </article>
+      </div>
+
+      <div class="card accent-amarillo" style="margin-top:14px">
+        <div class="title">Propiedad Industrial</div>
+        <p class="lead">Incluye <strong>marcas</strong>, <strong>patentes</strong>, <strong>diseños industriales</strong> e <strong>indicaciones geográficas</strong>. El registro de marca (ver Panel “Proceso”) forma parte de esta área.</p>
+        <div class="note">Para microempresas, proteger activos intangibles puede ser tan valioso como proteger activos físicos.</div>
+      </div>
+    </section>
+
+    <!-- CTA inferior -->
+    <div class="card" style="margin-top:18px;border-left:6px solid var(--azul)">
+      <div class="title">Checklist rápido</div>
+      <ul class="lead" style="margin:.3rem 0 0 1rem">
+        <li>Hice la <strong>búsqueda fonética</strong> y no hay conflictos.</li>
+        <li>Elegí la <strong>clase Niza</strong> correcta para mis productos/servicios.</li>
+        <li>Redacté una <strong>descripción clara</strong> de la marca.</li>
+        <li>Subí <strong>comprobantes</strong> y documentos requeridos.</li>
+        <li>Monitoreo <strong>casillero</strong>, publicación y posibles oposiciones.</li>
+      </ul>
+      <div class="row" style="margin-top:10px">
+        <button class="cta" id="scrollProceso">Ver el proceso paso a paso</button>
+        <span class="pill">Duración 5–6 meses</span>
+        <span class="pill">$16 Búsqueda</span>
+        <span class="pill">$208 Registro</span>
+      </div>
+    </div>
+  </div>
+
+<script>
+  // Tabs accesibles
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>{t.classList.remove('active'); t.setAttribute('aria-selected','false')});
+      panels.forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      const id = tab.getAttribute('aria-controls');
+      document.getElementById(id).classList.add('active');
+      setTimeout(()=>document.getElementById(id).scrollIntoView({behavior:'smooth',block:'start'}),50);
+    });
+  });
+
+  // Botón de CTA hacia Proceso
+  const btnProceso = document.getElementById('scrollProceso');
+  if(btnProceso){
+    btnProceso.addEventListener('click',()=>{
+      document.getElementById('t2').click();
+    });
+  }
+</script>
+</body>
+</html>
