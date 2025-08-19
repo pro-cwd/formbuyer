@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Infografía Interactiva: Meta Ads para Emprendedores</title>
+<style>
+  :root{
+    --azul:#1D53A0;
+    --amarillo:#FEBB33;
+    --verde:#64A98F;
+    --menta:#9FFFCB;
+    --gris:#f5f7fb;
+    --texto:#1b1f2a;
+    --texto-sec:#42526e;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--gris);color:var(--texto);font-family:system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:1100px;margin:clamp(12px,2vw,24px) auto;padding:clamp(12px,3vw,28px);background:#fff;border-radius:18px;box-shadow:0 10px 30px rgba(0,0,0,.07)}
+  header{display:grid;gap:10px;justify-items:center;text-align:center}
+  .badge{display:inline-block;background:var(--menta);color:var(--azul);font-weight:700;padding:.35rem .7rem;border-radius:999px;font-size:.85rem;letter-spacing:.3px}
+  h1{margin:.2rem 0 0;font-size:clamp(1.4rem,3.4vw,2rem);color:var(--azul)}
+  .sub{color:var(--texto-sec);max-width:900px}
+  .palette{display:flex;gap:10px;margin:.5rem 0 1rem}
+  .sw{width:28px;height:18px;border-radius:6px;border:1px solid #e6eaef}
+  .sw.c1{background:#1D53A0}.sw.c2{background:#FEBB33}.sw.c3{background:#64A98F}.sw.c4{background:#9FFFCB}
+
+  /* Tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+  .tab{cursor:pointer;border:2px solid transparent;background:#eef5ff;color:var(--azul);padding:.6rem .9rem;border-radius:12px;font-weight:700;transition:.2s}
+  .tab:hover{transform:translateY(-1px)}
+  .tab.active{background:var(--azul);color:#fff}
+  .panel{display:none;margin-top:16px;animation:fade .25s ease}
+  .panel.active{display:block}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+  /* Cards & grids */
+  .grid{display:grid;gap:14px}
+  .grid.cols-3{grid-template-columns:repeat(3,1fr)}
+  .grid.cols-2{grid-template-columns:repeat(2,1fr)}
+  @media (max-width:900px){.grid.cols-3{grid-template-columns:repeat(2,1fr)}}
+  @media (max-width:640px){.grid.cols-3,.grid.cols-2{grid-template-columns:1fr}}
+
+  .card{background:#fff;border:1px solid #e8eef6;border-radius:14px;padding:16px}
+  .card.h{display:flex;gap:12px;align-items:flex-start;border-left:6px solid var(--verde)}
+  .kicker{font-size:.8rem;font-weight:700;letter-spacing:.3px;color:var(--texto-sec);text-transform:uppercase}
+  .title{font-weight:800;color:var(--azul)}
+  .lead{color:var(--texto-sec)}
+  .cta{display:inline-flex;align-items:center;gap:8px;background:var(--amarillo);color:#1a1a1a;font-weight:800;border:none;border-radius:12px;padding:.6rem .9rem;cursor:pointer}
+  .cta:hover{filter:brightness(.98)}
+
+  /* Acordeones accesibles */
+  details{border:1px solid #e8eef6;border-radius:12px;padding:12px;background:#fcfdff}
+  summary{cursor:pointer;font-weight:800;color:var(--azul);list-style:none}
+  summary::-webkit-details-marker{display:none}
+  details + details{margin-top:10px}
+
+  /* Pills / etiquetas */
+  .pill{display:inline-block;background:#eef7f4;border:1px solid #d7efe6;color:#245c4c;font-weight:700;border-radius:999px;padding:.25rem .6rem;font-size:.78rem}
+
+  /* Métricas */
+  .metrics{display:grid;gap:12px}
+  .metric{display:grid;gap:6px;border:1px solid #e8eef6;border-radius:12px;padding:12px}
+  .metric .label{display:flex;align-items:center;gap:8px;font-weight:800;color:#183b7a}
+  .metric .hint{font-size:.9rem;color:var(--texto-sec)}
+  .bar{height:10px;background:#eaf3ff;border-radius:999px;overflow:hidden}
+  .bar>span{display:block;height:100%;background:linear-gradient(90deg,var(--azul),var(--menta));width:0%}
+  .row{display:flex;gap:8px;flex-wrap:wrap}
+
+  /* Tooltips simples */
+  .tip{position:relative;cursor:help;border-bottom:1px dotted currentColor}
+  .tip:hover::after{content:attr(data-tip);position:absolute;z-index:10;left:0;top:120%;min-width:200px;max-width:280px;background:#0f1f3a;color:#fff;padding:.5rem .6rem;border-radius:8px;font-size:.85rem;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+
+  /* Footer nota */
+  .note{margin-top:14px;font-size:.9rem;color:var(--texto-sec);background:#f6fbff;border:1px dashed #dbe8ff;padding:10px;border-radius:10px}
+</style>
+</head>
+<body>
+  <div class="wrap" role="main">
+    <header>
+      <span class="badge">5.3 • Meta Ads para Emprendedores</span>
+      <h1>Conceptos Básicos y Métricas Esenciales</h1>
+      <p class="sub">
+        Meta Ads permite crear y gestionar campañas en <strong>Facebook, Instagram, Messenger</strong> y <strong>Audience Network</strong>. 
+        Es clave para microempresas porque te permite ir más allá del alcance orgánico y ganar visibilidad con control total de inversión.
+      </p>
+      <div class="palette" aria-label="Paleta de colores">
+        <span class="sw c1" title="#1D53A0"></span>
+        <span class="sw c2" title="#FEBB33"></span>
+        <span class="sw c3" title="#64A98F"></span>
+        <span class="sw c4" title="#9FFFCB"></span>
+      </div>
+      <div class="row" style="justify-content:center">
+        <button class="cta" id="btnScroll">Ver cómo funciona</button>
+        <span class="pill">Responsive</span>
+        <span class="pill">Interactivo</span>
+        <span class="pill">Para cursos</span>
+      </div>
+    </header>
+
+    <!-- Tabs -->
+    <nav class="tabs" role="tablist" aria-label="Secciones de la infografía">
+      <button class="tab active" role="tab" aria-selected="true" aria-controls="p1" id="t1">Cómo funciona</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p2" id="t2">Consejos</button>
+      <button class="tab" role="tab" aria-selected="false" aria-controls="p3" id="t3">Métricas</button>
+    </nav>
+
+    <!-- Panel 1 -->
+    <section class="panel active" id="p1" role="tabpanel" aria-labelledby="t1">
+      <div class="grid cols-3" id="funciona">
+        <article class="card h">
+          <div class="kicker">Paso 1</div>
+          <div>
+            <div class="title">Crea tu campaña y elige el objetivo</div>
+            <p class="lead">Define si buscas <strong>ventas</strong>, <strong>leads</strong>, <strong>tráfico</strong>, <strong>reconocimiento</strong>, <strong>vistas de video</strong> o <strong>interacción</strong>.</p>
+          </div>
+        </article>
+        <article class="card h" style="border-left-color:var(--amarillo)">
+          <div class="kicker">Paso 2</div>
+          <div>
+            <div class="title">Configura el conjunto de anuncios</div>
+            <p class="lead">Elige <strong>público</strong> (intereses, demografía, comportamiento), <strong>ubicaciones</strong> (feed, stories, reels), <strong>presupuesto</strong> y <strong>duración</strong>.</p>
+          </div>
+        </article>
+        <article class="card h" style="border-left-color:var(--azul)">
+          <div class="kicker">Paso 3</div>
+          <div>
+            <div class="title">Diseña el anuncio</div>
+            <p class="lead">Usa <strong>imágenes</strong>, <strong>videos</strong> o <strong>carruseles</strong> con copy claro y una <strong>CTA</strong> potente.</p>
+          </div>
+        </article>
+      </div>
+
+      <h2 style="margin:18px 0 8px;color:var(--azul)">Preguntas rápidas</h2>
+      <details>
+        <summary>¿Puedo empezar con poco presupuesto?</summary>
+        <p>Sí. Inicia desde <strong>$1 al día</strong> y escala según resultados.</p>
+      </details>
+      <details>
+        <summary>¿Necesito instalar el <span class="tip" data-tip="Fragmento de código que mide eventos y conversiones del sitio">Pixel</span>?</summary>
+        <p>Recomendado. El <strong>Facebook Pixel</strong> rastrea visitas, conversiones y ayuda a optimizar la entrega.</p>
+      </details>
+      <details>
+        <summary>¿Qué es un <em>Lookalike</em> (público semejante)?</summary>
+        <p>Un público nuevo con rasgos similares a tus clientes o visitantes actuales para ampliar alcance con afinidad.</p>
+      </details>
+    </section>
+
+    <!-- Panel 2 -->
+    <section class="panel" id="p2" role="tabpanel" aria-labelledby="t2">
+      <div class="grid cols-2">
+        <article class="card">
+          <div class="title">Consejos para maximizar Meta Ads</div>
+          <ul>
+            <li><strong>Empieza con presupuesto bajo</strong> y escala con datos.</li>
+            <li><strong>Instala el Pixel</strong> para medir y optimizar.</li>
+            <li><strong>Crea públicos semejantes</strong> (lookalike) desde clientes/visitantes.</li>
+            <li><strong>Prueba formatos</strong>: imágenes, video, carrusel.</li>
+            <li><strong>Haz remarketing</strong> a quienes ya interactuaron.</li>
+            <li><strong>Pruebas A/B</strong>: cambia copy, creatividades o públicos.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <div class="title">Calidad y formato</div>
+          <ul>
+            <li>Cuida <strong>iluminación</strong> y <strong>sonido</strong>.</li>
+            <li>Adapta a la plataforma (p. ej., <strong>Stories/Reels 30s</strong>).</li>
+            <li>Usa <strong>contenido humano</strong>: detrás de cámaras, armado de pedidos.</li>
+            <li><strong>Muestra beneficios</strong> y la transformación, no solo características.</li>
+            <li>Incluye siempre <strong>CTA</strong> claro (en video o descripción).</li>
+          </ul>
+        </article>
+      </div>
+      <div class="note">
+        Tip: publica <em>unboxing</em> y responde FAQs en clips cortos. Genera confianza y mejora el CTR.
+      </div>
+    </section>
+
+    <!-- Panel 3 -->
+    <section class="panel" id="p3" role="tabpanel" aria-labelledby="t3">
+      <div class="card" style="border-left:6px solid var(--amarillo);margin-bottom:10px">
+        <div class="title">Métricas esenciales (evita la vanidad)</div>
+        <p class="lead">Enfócate en indicadores que impactan el negocio, no solo “me gusta” o alcance teórico.</p>
+      </div>
+
+      <div class="metrics">
+        <!-- Conversiones -->
+        <div class="metric">
+          <div class="label">Número de Conversiones 
+            <span class="tip" data-tip="Acciones deseadas tras ver el anuncio: compra, registro, clic en CTA.">ⓘ</span>
+          </div>
+          <div class="hint">Mide acciones reales (ventas, leads, clics clave).</div>
+          <div class="bar"><span style="width:68%"></span></div>
+          <div class="row">
+            <span class="pill">Acción: Compra</span>
+            <span class="pill">Registro</span>
+            <span class="pill">Clic en CTA</span>
+          </div>
+        </div>
+
+        <!-- ROAS -->
+        <div class="metric">
+          <div class="label">Gasto y ROAS 
+            <span class="tip" data-tip="Retorno por cada dólar invertido en anuncios. Más alto = mejor.">ⓘ</span>
+          </div>
+          <div class="hint">Evalúa la rentabilidad de tus campañas.</div>
+          <div class="bar"><span style="width:72%"></span></div>
+          <div class="row">
+            <span class="pill">ROAS objetivo</span>
+            <span class="pill">Control de gasto</span>
+          </div>
+        </div>
+
+        <!-- CPC / CTR -->
+        <div class="metric">
+          <div class="label">CPC &amp; CTR 
+            <span class="tip" data-tip="CPC: costo promedio por clic. CTR: % de personas que hacen clic tras ver el anuncio.">ⓘ</span>
+          </div>
+          <div class="hint">CTR bajo: revisa segmentación y creatividad.</div>
+          <div class="bar"><span style="width:54%"></span></div>
+          <div class="row">
+            <span class="pill">CPC</span>
+            <span class="pill">CTR</span>
+          </div>
+        </div>
+
+        <!-- CPA -->
+        <div class="metric">
+          <div class="label">CPA (Costo por Acción) 
+            <span class="tip" data-tip="Costo promedio por cada acción deseada: clic, reproducción, compartir, etc.">ⓘ</span>
+          </div>
+          <div class="hint">Compara eficiencia entre anuncios y públicos.</div>
+          <div class="bar"><span style="width:61%"></span></div>
+          <div class="row">
+            <span class="pill">Optimiza objetivo</span>
+            <span class="pill">Controla pujas</span>
+          </div>
+        </div>
+
+        <!-- Frecuencia -->
+        <div class="metric">
+          <div class="label">Frecuencia 
+            <span class="tip" data-tip="Veces promedio que un usuario ve tu anuncio. Muy alta = fatiga/ceguera.">ⓘ</span>
+          </div>
+          <div class="hint">Si sube mucho, crea nuevas creatividades o ajusta público.</div>
+          <div class="bar"><span style="width:38%"></span></div>
+          <div class="row">
+            <span class="pill">Rotación creativa</span>
+            <span class="pill">Ampliar público</span>
+          </div>
+        </div>
+
+        <!-- Impresiones & Alcance -->
+        <div class="metric">
+          <div class="label">Impresiones &amp; Alcance 
+            <span class="tip" data-tip="Impresiones: veces mostrado. Alcance: personas únicas.">ⓘ</span>
+          </div>
+          <div class="hint">Muchas impresiones y poco alcance: revisa frecuencia / segmentación.</div>
+          <div class="bar"><span style="width:47%"></span></div>
+          <div class="row">
+            <span class="pill">Cobertura</span>
+            <span class="pill">Cap. de entrega</span>
+          </div>
+        </div>
+
+        <!-- Crecimiento & Demografía -->
+        <div class="metric">
+          <div class="label">Crecimiento de Seguidores &amp; Demografía 
+            <span class="tip" data-tip="Asegura que tu audiencia coincida con tu buyer persona.">ⓘ</span>
+          </div>
+          <div class="hint">Indicador de salud de cuenta, no fin en sí mismo.</div>
+          <div class="bar"><span style="width:42%"></span></div>
+          <div class="row">
+            <span class="pill">Afinidad</span>
+            <span class="pill">Segmentación</span>
+          </div>
+        </div>
+
+        <!-- Menciones de Marca -->
+        <div class="metric">
+          <div class="label">Menciones de Marca 
+            <span class="tip" data-tip="Artículos, reseñas, publicaciones. Responder mejora credibilidad.">ⓘ</span>
+          </div>
+          <div class="hint">Escucha activa y gestión de reputación.</div>
+          <div class="bar"><span style="width:33%"></span></div>
+          <div class="row">
+            <span class="pill">Social listening</span>
+            <span class="pill">PR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="note">
+        <strong>Recuerda:</strong> monitorear métricas te permite tomar decisiones informadas y optimizar el rendimiento de tus campañas.
+      </div>
+    </section>
+  </div>
+
+<script>
+  // Tabs accesibles
+  const tabs = document.querySelectorAll('.tab');
+  const panels = document.querySelectorAll('.panel');
+  tabs.forEach(tab=>{
+    tab.addEventListener('click',()=>{
+      tabs.forEach(t=>{t.classList.remove('active'); t.setAttribute('aria-selected','false')});
+      panels.forEach(p=>p.classList.remove('active'));
+      tab.classList.add('active');
+      tab.setAttribute('aria-selected','true');
+      document.getElementById(tab.getAttribute('aria-controls')).classList.add('active');
+      // focus panel for a11y
+      setTimeout(()=>document.getElementById(tab.getAttribute('aria-controls')).scrollIntoView({behavior:'smooth',block:'start'}),50);
+    });
+  });
+
+  // Scroll al bloque "Cómo funciona"
+  document.getElementById('btnScroll').addEventListener('click',()=>{
+    // asegura que el tab 1 esté activo
+    document.getElementById('t1').click();
+  });
+
+  // Animación de barras al entrar en viewport
+  const bars = document.querySelectorAll('.bar > span');
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){
+        const el = e.target;
+        // fuerza reflujo para animación
+        const finalW = el.style.width;
+        el.style.width = '0%';
+        setTimeout(()=>{ el.style.transition='width 900ms ease'; el.style.width = finalW; },100);
+        io.unobserve(el);
+      }
+    });
+  },{threshold:0.4});
+  bars.forEach(b=>io.observe(b));
+</script>
+</body>
+</html>
